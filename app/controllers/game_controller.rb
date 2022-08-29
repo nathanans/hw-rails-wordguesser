@@ -9,11 +9,13 @@ class GameController < ApplicationController
     @game = WordGuesserGame.new('')
     if !session[:game].blank?
       @game = YAML.load(session[:game])
+      # @game = JSON.parse(session[:game])
     end
   end
 
   def store_game_in_session
     session[:game] = @game.to_yaml
+    # session[:game] = @game.to_json
   end
 
   public
